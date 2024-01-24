@@ -44,7 +44,7 @@ class CrossSiteModelEval(Controller):
         model_locator_id="",
         formatter_id="",
         submit_model_task_name=AppConstants.TASK_SUBMIT_MODEL,
-        model_choice='best',
+        model_choice="best",
         validation_task_name=AppConstants.TASK_VALIDATION,
         cleanup_models=False,
         participating_clients=None,
