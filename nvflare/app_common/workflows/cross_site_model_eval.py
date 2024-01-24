@@ -62,7 +62,7 @@ class CrossSiteModelEval(Controller):
             model_locator_id (str, optional): ID for model_locator component. Defaults to "".
             formatter_id (str, optional): ID for formatter component. Defaults to "".
             submit_model_task_name (str, optional): Name of submit_model task. Defaults to "".
-            model_choice (str, optional): Whether the evaluated models are the 'best' or the 'final' of each client. Defaults to 'best'.
+            model_choice (str, optional): Whether the evaluated models are the "best" or the "final" of each client. Defaults to "best".
             validation_task_name (str, optional): Name of validate_model task. Defaults to "validate".
             cleanup_models (bool, optional): Whether or not models should be deleted after run. Defaults to False.
             participating_clients (list, optional): List of participating client names. If not provided, defaults
@@ -86,7 +86,7 @@ class CrossSiteModelEval(Controller):
         if not isinstance(submit_model_task_name, str):
             raise TypeError("submit_model_task_name must be a string but got {}".format(type(submit_model_task_name)))
         if model_choice not in ['best', 'final']:
-            raise TypeError("model_choice must be either 'best' or 'final' but got {}".format(model_choice))
+            raise TypeError("model_choice must be either best or final but got {}".format(model_choice))
         if not isinstance(validation_task_name, str):
             raise TypeError("validation_task_name must be a string but got {}".format(type(validation_task_name)))
         if not isinstance(cleanup_models, bool):
