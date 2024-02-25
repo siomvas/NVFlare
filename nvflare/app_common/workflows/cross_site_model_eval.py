@@ -44,7 +44,7 @@ class CrossSiteModelEval(Controller):
         model_locator_id="",
         formatter_id="",
         submit_model_task_name=AppConstants.TASK_SUBMIT_MODEL,
-        model_choice="best",
+        model_choice: str = "best",
         validation_task_name=AppConstants.TASK_VALIDATION,
         cleanup_models=False,
         participating_clients=None,
@@ -62,7 +62,8 @@ class CrossSiteModelEval(Controller):
             model_locator_id (str, optional): ID for model_locator component. Defaults to "".
             formatter_id (str, optional): ID for formatter component. Defaults to "".
             submit_model_task_name (str, optional): Name of submit_model task. Defaults to "".
-            model_choice (str, optional): Whether the evaluated models are the "best" or the "final" of each client. Defaults to "best".
+            model_choice (str, optional): Whether to evaluate the best or the final models
+            of each client. Defaults to 'best'.
             validation_task_name (str, optional): Name of validate_model task. Defaults to "validate".
             cleanup_models (bool, optional): Whether or not models should be deleted after run. Defaults to False.
             participating_clients (list, optional): List of participating client names. If not provided, defaults
@@ -85,7 +86,7 @@ class CrossSiteModelEval(Controller):
             raise TypeError("formatter_id must be a string but got {}".format(type(formatter_id)))
         if not isinstance(submit_model_task_name, str):
             raise TypeError("submit_model_task_name must be a string but got {}".format(type(submit_model_task_name)))
-        if model_choice not in ['best', 'final']:
+        if model_choice not in ["best", "final"]:
             raise TypeError("model_choice must be either best or final but got {}".format(model_choice))
         if not isinstance(validation_task_name, str):
             raise TypeError("validation_task_name must be a string but got {}".format(type(validation_task_name)))
@@ -346,7 +347,7 @@ class CrossSiteModelEval(Controller):
         fl_ctx.set_prop(AppConstants.RECEIVED_MODEL, result, private=True, sticky=False)
         fl_ctx.set_prop(AppConstants.RECEIVED_MODEL_OWNER, client_name, private=True, sticky=False)
         fl_ctx.set_prop(AppConstants.CROSS_VAL_DIR, self._cross_val_dir, private=True, sticky=False)
-        if self._model_choice == 'best':
+        if self._model_choice == "best":
             self.fire_event(AppEventType.RECEIVE_BEST_MODEL, fl_ctx)
         else:
             self.fire_event(AppEventType.RECEIVE_VALIDATION_MODEL, fl_ctx)
